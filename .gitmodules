@@ -1,6 +1,3 @@
-[submodule "affiliate_repos/affiliate_repos/ScanNet"]
-	path = affiliate_repos/affiliate_repos/ScanNet
-	url = https://github.com/ScanNet/ScanNet.git
 [submodule "affiliate_repos/ScanNet"]
 	path = affiliate_repos/ScanNet
 	url = https://github.com/ScanNet/ScanNet.git
