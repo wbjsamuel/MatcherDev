@@ -1,0 +1,1 @@
+./match_pairs.py --resize 1600 --superglue outdoor --max_keypoints 2048 --nms_radius 3 --resize_float --input_dir data/IMC-PT/imw-2020-test --input_pairs assets/phototourism_test_pairs.txt --output_dir IMC-PT_baseline_results --viz

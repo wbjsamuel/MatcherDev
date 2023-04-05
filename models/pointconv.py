@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch
 import numpy as np
 import torch.nn.functional as F
-from utils.pointconv_util import PointConvDensitySetAbstraction
+from models.pointconv_utils.pointconv_util import PointConvDensitySetAbstraction
 
 class PointConvDensityClsSsg(nn.Module):
     def __init__(self, num_classes = 40):
@@ -43,6 +43,6 @@ if __name__ == '__main__':
     input = torch.randn((8,3,2048))
     label = torch.randn(8,16)
     model = PointConvDensityClsSsg(num_classes=40)
-    output= model(input)
+    output= model(input,label)
     print(output.size())
 

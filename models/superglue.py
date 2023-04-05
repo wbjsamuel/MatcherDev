@@ -46,6 +46,8 @@ from typing import List, Tuple
 
 import torch
 from torch import nn
+import torch.nn.functional as F
+from models.pointconv import PointConvDensityClsSsg
 
 
 def MLP(channels: List[int], do_bn: bool = True) -> nn.Module:
@@ -254,15 +256,17 @@ class SuperGlue(nn.Module):
 
         # Final MLP projection.
         mdesc0, mdesc1 = self.final_proj(desc0), self.final_proj(desc1)
-
+        # print(f'Shape of final MLP projection is {mdesc0.shape}')
         # Compute matching descriptor distance.
         scores = torch.einsum('bdn,bdm->bnm', mdesc0, mdesc1)
         scores = scores / self.config['descriptor_dim']**.5
+        # print(f'Shape of matching descriptor distance is {scores.shape}') # for debug
 
         # Run the optimal transport.
         scores = log_optimal_transport(
             scores, self.bin_score,
-            iters=self.config['sinkhorn_iterations'])
+            iters=self.config['sinkhorn_iterations']) # TODO replace with either DGCNN or PointConv
+        # print(f'Shape of matching score is {scores.shape}') # for debug
 
         # Get the matches with score above "match_threshold".
         max0, max1 = scores[:, :-1, :-1].max(2), scores[:, :-1, :-1].max(1)
