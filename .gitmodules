@@ -1,0 +1,12 @@
+[submodule "affiliate_repos/affiliate_repos/ScanNet"]
+	path = affiliate_repos/affiliate_repos/ScanNet
+	url = https://github.com/ScanNet/ScanNet.git
+[submodule "affiliate_repos/ScanNet"]
+	path = affiliate_repos/ScanNet
+	url = https://github.com/ScanNet/ScanNet.git
+[submodule "affiliate_repos/pointconv_pytorch"]
+	path = affiliate_repos/pointconv_pytorch
+	url = https://github.com/DylanWusee/pointconv_pytorch.git
+[submodule "affiliate_repos/OANet"]
+	path = affiliate_repos/OANet
+	url = https://github.com/zjhthu/OANet.git
